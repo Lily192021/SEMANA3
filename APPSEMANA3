@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html><head><meta charset="utf-8">
+
+<script type="text/javascript">
+
+var eventoControlado = false;
+
+window.onload = function() { document.onkeypress = mostrarInformacionCaracter;
+
+document.onkeyup = mostrarInformacionTecla;
+document.body.style.background = 'black'; }
+
+function mostrarInformacionCaracter(evObject) {
+
+                var msg = ''; var elCaracter = String.fromCharCode(evObject.which);
+
+                if (evObject.which!=0 && evObject.which!=13) 
+                {
+                    document.body.style.color = 'green';
+                    msg = 'Tecla pulsada: ' + elCaracter;
+                    control.innerHTML += msg + '<br/>'; 
+                }
+                else 
+                { 
+                    msg = 'Pulsada tecla especial';
+                    control.innerHTML += msg + '<br/>';
+                }
+
+                if(window.event)
+                {
+                    keynum = evObject.keyCode
+                }
+                else
+                {
+                    keynum = evObject.which
+                }
+
+                if((keynum > 47 && keynum < 58)||keynum == 8|| keynum == 13)
+                {
+                    document.body.style.color = 'red';
+                }
+                else
+                {
+                    msg = 'Tecla pulsada es letra'
+                }
+                            eventoControlado=true;
+
+}
+
+function mostrarInformacionTecla(evObject) {
+
+                var msg = ''; var teclaPulsada = evObject.keyCode;
+
+                if (teclaPulsada == 20) { 
+                    document.body.style.color = 'yellow';
+                    msg = 'Pulsado caps lock (act/des mayúsculas)';}
+
+                else if (teclaPulsada == 16) { 
+                    document.body.style.color = 'yellow';
+                    msg = 'Pulsado shift';}
+
+                else if (teclaPulsada == 17) { 
+                    document.body.style.color = 'yellow';
+                    msg = 'Pulsado CTRL';}
+                else if (teclaPulsada > 33 $$ teclaPulsada < 47) { 
+                    document.body.style.color = 'yellow';
+                    msg = 'Pulsado';}
+
+                if (msg) {control.innerHTML += msg + '<br/>';}
+                    
+                eventoControlado = false;
+
+}
+
+</script>
+
+</head>
+
+<body><div id="cabecera"><h3 style="color: white;">Pulse una tecla</h3></div>
+
+<div id="control"> </div>
+
+</body></html>
